@@ -79,7 +79,7 @@ snake_init(){
     pos=(right right right right right);    #开始节点的方向: "right" "right" "right" "right" "right"
     xpt=($xline $xline $xline $xline $xline);   #开始的每个节点的x坐标
     ypt=(5 4 3 2 1);                        #开始的各节点的y坐标
-    speed=(0.5 1 1.5);                  #速度 
+    speed=(1 2 3);                  #速度 
     spk=${spk:-1};                          #默认速度，如果${spk}存在则spk=${spk}，如果${spk}不存在，则spk=1,{:-1}表示默认值为1
 
     draw_gui $((Lines-1)) $Cols
@@ -168,6 +168,7 @@ mk_random(){
 new_game(){
     snake_init;
     while true; do
+        # read: 1.5: invalid timeout specification 新bash版本支持 -t 后面的秒为小数。当前旧版本不支持-t 小数，仅支持整型
         read -t ${speed[$spk]} -n 1 key;    #-t 后面跟秒数，定义输入字符的等待时间。
         [[ $? -eq 0 ]] && Gooooo;   # $? 显示命令的退出状态，0表示没有错误，其他任何值表示有错误
 
