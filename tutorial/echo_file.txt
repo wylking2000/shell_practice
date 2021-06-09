@@ -1,0 +1,1 @@
+It is a write to echo_file.txt test
